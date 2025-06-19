@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CECYTE Tlacotepec</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+      background: linear-gradient(to right, #b2f7ef, #b2f7b2); /* verde pastel y azul pastel */
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+
+    header {
+      background-color: rgba(0, 100, 0, 0.8);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      background-color: rgba(0, 150, 100, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .toggle-dark {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
+      background-color: #ffffffcc;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .dark-mode .toggle-dark {
+      background-color: #444444cc;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-dark" onclick="toggleDarkMode()">Modo Oscuro</button>
+
+  <canvas id="canvas"></canvas>
+
+  <header>
+    <h1>CECYTE Plantel Tlacotepec</h1>
+    <p>Comprometidos con la excelencia educativa</p>
+  </header>
+
+  <nav>
+    <a href="#himno">Himno</a>
+    <a href="#escudo">Escudo</a>
+    <a href="#datos">Datos</a>
+  </nav>
+  <center>
+ <h2>Escribe tu nombre</h2>
+  <input type="text" id="textoInput" placeholder="Escribe tu nombre">
+  <p>Bienvenido al Plantel CECyTE Tlacotepec: <span id="preview"></span></p>
+  <!-- A medida que escribes, se muestra el texto debajo -->
+   </center>
+   <script>
+  // INPUT
+    const inputTexto = document.getElementById("textoInput");
+    const preview = document.getElementById("preview");
+
+    inputTexto.addEventListener("input", () => {
+      preview.textContent = inputTexto.value; // Refleja el texto al escribir
+    });
+    </script>
+  <center>
+<audio controls>
+        <source src="himno.mp3.mpeg"type="audio/mpeg">
+        <source src="hino.ogg"type="audio/ogg">
+        <p>
+            su navegador vo es compatible con HTML5.Aqui hay un
+            <a href="himno.mp3.mpeg">enlace al audio</a>en su lugar.
+        </p>
+    </audio> 
+    </center> 
+  <section id="himno">
+    <h2>Significado del Himno</h2>
+    <p>El himno del CECyTE Tlacotepec simboliza el orgullo, la identidad y
+       el compromiso de los estudiantes con su institución. Con letras que exaltan el conocimiento,
+        la unidad y el desarrollo, el himno busca motivar a la comunidad estudiantil a alcanzar sus metas.</p>
+        <em style="color:forestgreen;">El himno al CECyTE (Colegio de Estudios Científicos y Tecnológicos del Estado) surgió como 
+        una forma de fomentar la identidad y el orgullo entre los estudiantes y la comunidad educativa
+         de esta institución. Los CECyTE se establecieron en México para ofrecer educación media 
+         superior con un enfoque técnico, y el himno refleja los valores y la misión de estos colegios.</em><br>
+         <em style="color: darkolivegreen;">El significado del himno al CECyTE se centra en la búsqueda de la excelencia académica, 
+          el compromiso con el aprendizaje y el desarrollo personal y profesional. Además, resalta la importancia
+          de la formación técnica para contribuir al progreso del país y a la vida de los estudiantes. A través de su letra, se 
+          busca inspirar a los jóvenes a ser agentes de cambio en sus comunidades.</em>
+  </section>
+  <center>
+  <img src="imagen 32" alt="imagen2" title="Verduras" width="300" height="260"><br>
+  </center>
+
+
+  <section id="escudo">
+    <h2>Significado del Escudo</h2>
+    <p>El escudo representa los valores fundamentales del CECyTE: ciencia, tecnología, cultura y 
+      compromiso social. Sus colores y elementos reflejan la historia, la misión y la visión del plantel, proyectando
+       una imagen de progreso y responsabilidad.</p>
+       <p>
+        El escudo del CECyTE Puebla, como el de otros CECyTEs, suele tener elementos que representan la educación 
+        científica y tecnológica, así como la identidad del estado de Puebla. Aunque no hay una descripción oficial del 
+        significado de cada elemento, comúnmente se interpreta que el símbolo de las dos rayas ( = ) 
+        representa la unidad y pertenencia a la institución, y el átomo con su trayectoria, la ciencia y la tecnología. 
+       </p>
+       <p>
+        El CECyTE Puebla, como parte del subsistema CECyTE, busca formar estudiantes con una visión 
+        científica y tecnológica, preparándolos tanto para continuar estudios superiores como para incorporarse 
+        al ámbito laboral con un título técnico. El escudo, por lo tanto, simboliza estos objetivos, integrando la 
+        formación general de bachillerato con la formación técnica profesional. 
+En resumen, el escudo del CECyTE Puebla es una representación visual de la misión de
+ la institución: formar estudiantes con conocimientos científicos y tecnológicos, preparándolos para el 
+ futuro académico y profesional. 
+       </p>
+
+  </section>
+<center>
+    <video
+                    controls
+                    width="400"
+                    height="400"
+                    autoplay 
+                    loop
+                    muted
+                    poster="poster.pong">
+                    <source src="WhatsApp Video 2025-06-18 at 11.41.29 PM.mp4" type="video/mp4"/>
+                    <source src="WhatsApp Video 2025-06-18 at 11.41.29 PM.mp4" type="video/webm"/>
+                    <p>
+                        su navegador no soporta video HTML5. Este es un 
+                        <a href="cecyte320.mp4.mp4">enlace al video</a> alternativo.
+                    </p>
+                </video><br>
+            </center>
+  <section id="datos">
+    <h2>Datos Importantes del Plantel</h2>
+    <p>Durante 30 años CECyTE, ha enfocado su expansión y mejora educativa en el desarrollo de las 
+                competencias necesarias para que los jóvenes puedan enfrentar con éxito, los retos
+               del sector productivo y así poder contribuir a un desarrollo económico y social en sus comunidades.</p>
+
+            <p style="color: blue;">El objetivo de atender la demanda de técnicos especializados idóneos para insertar en el
+                 sector productivo del estado, por lo que, las y los estudiantes son el centro de nuestra 
+                 tarea diaria, cada integrante del personal administrativo y docente busca a través estrategias 
+                 innovadoras y de interés, eficientar procesos y así brindar un servicio educativo de calidad. 
+                 Este subsistema en el estado, se centra en formar líderes en EMS que cuenten con formación integral 
+                 de calidad, en espacios educativos óptimos favoreciendo el desarrollo de habilidades investigativas 
+                 y socioemocionales que sirvan como base para su desempeño en un futuro. Se ofrece al joven egresado 
+                 la oportunidad de continuar sus estudios de nivel superior para obtener una mayor especialización en
+                 su área de interés o bien, incorporarse al sector productivo, gracias a que durante su vida estudiantil 
+                 se vincula con el sector empresarial, así como, con el desarrollo de prototipos fomentando el 
+                 pensamiento científico, haciendo de esta, una de las mejores experiencias de formación y desarrollo de competencias</p>
+    <ul>
+      <li>Ubicación: Tlacotepec, Puebla</li>
+      <li>Oferta educativa: Técnico en Programación, Técnico en Electrónica, Técnico en Soporte y Mantenimiento</li>
+      <li>Fundado en: 2004</li>
+      <li>Infraestructura moderna y equipada</li>
+      <li>Eventos culturales, deportivos y académicos destacados</li>
+    </ul>
+  </section>
+  <center>
+  <img src="cecyte.jpg" alt="imagen2" title="Verduras" width="500" height="460"><br>
+  </center>
+  <center>
+  <h2>Selecciona el emoji con el que te identifiques al ver mi pagina web</h2>
+  <select id="selector">
+    <option value="">Selecciona un emoji</option>
+    <option value="Mas o menos atractiva">😒</option>
+    <option value="Feo">💩</option>
+    <option value="Bastante creativa">🤩</option>
+  </select>
+  <!-- Cuando se selecciona un color, se muestra una alerta -->
+   </center>
+   
+  <a href="paec.html"style="display:block; tex-align: center; margin: auto;" target="_blank">Ir a gardin botanico</a> 
+  
+   <script>
+    // CHANGE
+    const selector = document.getElementById("selector");
+
+    selector.addEventListener("change", (e) => {
+      alert(`Seleccionaste: ${e.target.value}`); // Muestra el valor seleccionado
+    });
+   </script>
+  <script>
+    // Modo oscuro
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Canvas de brillitos
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    document.addEventListener("mousemove", (e) => {
+      for (let i = 0; i < 5; i++) {
+        stars.push({
+          x: e.clientX,
+          y: e.clientY,
+          size: Math.random() * 3 + 1,
+          alpha: 1,
+          dx: (Math.random() - 0.5) * 2,
+          dy: (Math.random() - 0.5) * 2
+        });
+      }
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach((star, index) => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+        star.x += star.dx;
+        star.y += star.dy;
+        star.alpha -= 0.02;
+        if (star.alpha <= 0) stars.splice(index, 1);
+      });
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>

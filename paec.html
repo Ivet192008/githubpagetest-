@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jardín Botánico</title>
+  <style>
+    :root {
+      --verde-oscuro: #2e4e1c;
+      --verde-claro: #dff0dc;
+      --fondo-claro: #ffffff;
+      --fondo-oscuro: #1a1a1a;
+      --texto-oscuro: #e0f2f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--verde-claro);
+      color: var(--verde-oscuro);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: var(--fondo-oscuro);
+      color: var(--texto-oscuro);
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 4px solid #388e3c;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      animation: brillo 3s infinite;
+      text-shadow: 0 0 5px #fff, 0 0 10px #7fff7f, 0 0 20px #4caf50;
+    }
+
+    @keyframes brillo {
+      0%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #7fff7f, 0 0 20px #4caf50;
+      }
+      50% {
+        text-shadow: 0 0 15px #aaffaa, 0 0 30px #66ff66;
+      }
+    }
+
+    nav {
+      background-color: #81c784;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: #1b5e20;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      transition: background 0.3s;
+    }
+
+    body.dark-mode main {
+      background: rgba(30, 30, 30, 0.95);
+    }
+
+    h2 {
+      color: #388e3c;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .controls button {
+      margin: 0.5rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        margin: 0.5rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="backgroundCanvas"></canvas>
+
+  <header>
+    <h1>Jardín Botánico</h1>
+    <p>Descubre la belleza y ciencia de las plantas</p>
+  </header>
+
+  <nav>
+    <a href="#que-es">¿Qué es?</a>
+    <a href="#historia">Historia</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="controls">
+    <button onclick="toggleDarkMode()">🌙 Modo oscuro</button>
+    <button onclick="toggleAudio()">🔊 Activar sonido</button>
+  </div>
+
+  <audio id="natureAudio" loop>
+    <source src="WhatsApp Audio 2025-06-19 at 12.51.21 AM.mp4" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <main>
+    <section id="que-es">
+      <h2>¿Qué es un Jardín Botánico?</h2>
+      <p>Un jardín botánico es un espacio dedicado al cultivo, estudio y preservación de una gran variedad de plantas...</p>
+      <img src="jardin 2.jpg" alt="Jardín botánico">
+    </section>
+
+    <section id="historia">
+      <h2>Historia</h2>
+      <p>Los primeros jardines botánicos surgieron en la Edad Media con fines medicinales, y a partir del 
+        siglo XVI comenzaron a establecerse en Europa jardines vinculados a universidades y centros de investigación. 
+        En México, el Real Jardín Botánico de la Nueva España fue fundado en el siglo XVIII, y posteriormente 
+        se desarrollaron otros jardines como el de la UNAM. </p><br>
+        <p>Orígenes y Evolución:
+Antigüedad y Edad Media:
+Los orígenes de los jardines botánicos se pueden rastrear hasta la antigüedad, con ejemplos en China y Egipto donde se cultivaban plantas medicinales. En la Edad Media, los jardines monásticos y los jardines de simples, que se centraban en plantas medicinales, fueron precursores de los jardines botánicos modernos. 
+Renacimiento y Siglo XVI:
+Con el Renacimiento, los jardines botánicos comenzaron a surgir en Europa asociados a universidades y centros de estudio de botánica. Los jardines de Padua (1545), Pisa (1545) y Florencia (1554) son ejemplos tempranos de jardines botánicos con fines científicos. 
+Siglo XVIII:
+En el siglo XVIII, se establecieron importantes jardines botánicos en España, como el Real Jardín Botánico de Madrid y el Real Jardín Botánico de la Nueva España, este último impulsado por la Real Expedición Botánica. 
+Siglo XIX y XX:
+A partir del siglo XIX, los jardines botánicos se consolidaron como centros de investigación, educación y conservación de la biodiversidad vegetal. Se establecieron jardines botánicos en diversas partes del mundo, como el Jardín Botánico de la UNAM en México, que se fundó en 1959. 
+Actualidad:
+Los jardines botánicos actuales cumplen funciones diversas, incluyendo la investigación científica, la conservación de especies amenazadas, la educación ambiental y la divulgación del conocimiento botánico. 
+Jardines Botánicos en México:
+Real Jardín Botánico de la Nueva España:
+Fundado en el siglo XVIII, este jardín fue parte de la Real Expedición Botánica y se ubicó en el Palacio Virreinal de la Ciudad de México. 
+Jardín Botánico de la UNAM:
+Fundado en 1959, este jardín es uno de los más importantes de México, dedicado a la investigación, educación y conservación de la flora mexicana, especialmente especies raras y endémicas. 
+Jardín Botánico de Chapultepec:
+Ubicado dentro del Bosque de Chapultepec, este jardín se inauguró en 2006 y alberga una valiosa colección de plantas nativas e introducidas, con énfasis en la conservación y restauración de entornos únicos. 
+Jardín Botánico Clavijero:
+Ubicado en Xalapa, Veracruz, este jardín se dedica a la representación de la flora regional, con énfasis en especies amenazadas y útiles. 
+Jardín Etnobotánico del Centro INAH Morelos:
+Este jardín se enfoca en la investigación y conservación del conocimiento tradicional sobre el uso de las plantas medicinales. </p>
+    </section>
+    
+    <section id="funciones">
+      <h2>Funciones y Beneficios</h2>
+      <ul>
+        <li>Preservar especies vegetales</li>
+        <li>Educar sobre biodiversidad y ecología</li>
+        <li>Fomentar la investigación científica</li>
+        <li>Proporcionar espacios de recreación</li>
+      </ul>
+    </section>
+
+    <section id="galeria">
+      <h2>Galería</h2>
+      <img src="jardin botanico.jpg" alt="Jardín en Río de Janeiro">
+      <img src="cillaje jardin botanico.jpg" alt="Jardín de Barcelona">
+    </section>
+    <center>
+  <h2>Selecciona el emoji con el que califiques mi pagina web</h2>
+  <select id="selector">
+    <option value="">Selecciona un emoji</option>
+    <option value="Mas o menos atractiva">😒</option>
+    <option value="Feo">💩</option>
+    <option value="Bastante creativa">🤩</option>
+  </select>
+  </center>
+  <script>
+     // SUBMIT
+    const formulario = document.getElementById("miFormulario");
+
+    formulario.addEventListener("submit", (e) => {
+      e.preventDefault(); // Detiene el comportamiento por defecto (recarga)
+      alert("Formulario enviado correctamente");
+    });
+  </script>
+
+    <section id="contacto">
+      <h2>Contáctanos</h2>
+      <p>¿Deseas visitar el jardín botánico o enviar una consulta? Rellena el siguiente formulario:</p>
+      <form action="guardar.php" method="POST">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
+  </main>
+  <body>
+    <section id="formulario-contacto" style="margin-top: 2rem;">
+  <h2>Gracias por visitarnos🌷</h2>
+  <p>¿Tienes dudas o comentarios? ¡Escríbenos!</p>
+
+  <form id="contactoForm" onsubmit="mostrarMensaje(); return false;">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+    <textarea name="comentario" rows="4" placeholder="Escribe tus dudas..." required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<style>
+  #formulario-contacto {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  body.dark-mode #formulario-contacto {
+    background-color: rgba(34, 34, 34, 0.9);
+    color: #e0f2f1;
+  }
+
+  #formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #formulario-contacto input,
+  #formulario-contacto textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  body.dark-mode #formulario-contacto input,
+  body.dark-mode #formulario-contacto textarea {
+    background-color: #2a2a2a;
+    color: #e0f2f1;
+    border: 1px solid #555;
+  }
+
+  #formulario-contacto button {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #formulario-contacto button:hover {
+    background-color: #388e3c;
+  }
+</style>
+
+<script>
+  function mostrarMensaje() {
+    alert("✅ Gracias por visitar esta página web. Espero y vuelvas pronto.");
+    document.getElementById("contactoForm").reset(); // Limpia los campos
+  }
+</script>
+  </body>
+
+  <!-- ANIMACIÓN DE FONDO -->
+  <script>
+    const canvas = document.getElementById("backgroundCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    const hojas = Array.from({ length: 60 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 15 + 5,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: Math.random() * 0.5 + 0.2,
+      color: `rgba(34,139,34,${Math.random() * 0.6 + 0.2})`
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let h of hojas) {
+        ctx.beginPath();
+        ctx.ellipse(h.x, h.y, h.size, h.size / 2, 0, 0, 2 * Math.PI);
+        ctx.fillStyle = h.color;
+        ctx.fill();
+        h.x += h.dx;
+        h.y += h.dy;
+        if (h.y > height) {
+          h.y = -20;
+          h.x = Math.random() * width;
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // 🎵 Control de audio
+    const audio = document.getElementById("natureAudio");
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // 🌙 Modo oscuro
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+</html>
